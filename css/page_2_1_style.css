@@ -1,0 +1,94 @@
+table{
+	width: 90%;
+	margin-left: 5%;
+	margin-top: 20px;
+}
+
+#dep_col{
+	width: 30%;
+	text-align: left;
+	padding-left: 25px;
+}
+
+#ip_col{
+	width: 20%;
+	text-align: left;
+	padding-left: 25px;
+}
+
+#auth_col{
+	width: 25%;
+	text-align: left;
+	padding-left: 25px;
+}
+
+#model_col{
+	width: 25%;
+	text-align: left;
+	padding-left: 25px;
+}
+
+td{
+	height: 25px;
+	border-bottom: 1px solid gray;
+}
+
+button{
+	float: right;
+	margin-right: 5%;
+	font-size: 25px;
+	font-weight: bold;
+	color: gray;
+}
+
+
+#shadow{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(80,80,80,0.7);
+	text-align: center;
+}
+
+#add_printer{
+	width: 45%;
+	margin: auto;
+	margin-top: 15%;
+	/*margin-left: 25%;*/
+	background-color: lightgray;
+	padding: 30px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+	#add_printer label{
+		display: inline-block;
+		width: 150px;
+		text-align: left;
+		/*background-color: blue;*/
+	}
+
+	#add_printer input{
+		width: 340px;
+	}
+
+	#add_printer select{
+		width: 350px;
+	}
+
+	#add_printer button{
+		float: none;
+		margin-right: auto;
+		font-size: 20px;
+	}
+
+	#close_form{
+		float: right;
+		margin-right: -10px;
+		margin-top: -20px;
+		font-weight: bold;
+		cursor: pointer;
+	}

@@ -1,0 +1,419 @@
+/*
+Задачи дизайн
+*/
+#main_conteiner{
+    width: 90%;
+    margin: auto;
+    
+}
+
+.task_conteiner{
+    /*width: 100%;*/
+    display: inline-block;
+    margin-top: 0;
+    height: 75px;
+    position: relative;
+}
+
+.plitka_view{
+	width: 32%;
+}
+
+.spisok_view{
+	width: 100%;
+}
+
+.task_opis_show{
+    width: 650px;
+    max-height: 75px;
+    overflow: auto;
+    display: block;
+    
+    padding-left: 5px;
+    padding-right: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+.task_opis{
+    display: none;
+}
+
+.task{
+   width: 300px;
+   height: 61px;
+    border-radius: 10px;
+    padding: 5px;
+    display: block;
+    margin-right: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #87acda;
+    line-height: 21px;
+    cursor: pointer;
+}
+
+.not_start{
+    background-color: lightblue;   
+}
+
+.started{
+    background-color: lightgreen;   
+}
+
+.paused{
+    background-color: cyan;   
+}
+
+.waiting{
+    background-color: yellowgreen;
+}
+
+.complete{
+    background-color: lightgray;
+}
+
+#cross {
+  background: #87acda;
+  height: 50px;
+  position: relative;
+  width: 10px;
+  top: 5px;
+  left: 145px;
+}
+#cross:after {
+  background: #87acda;
+  content: "";
+  height: 10px;
+  left: -20px;
+  position: absolute;
+  top: 20px;
+  width: 50px;
+}
+
+.priority{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.priority_hight{
+    background-color: red;
+}
+
+.priority_medium{
+    background-color: yellow;
+}
+
+.priority_low{
+    background-color: blue;
+}
+
+/*
+Задачи события дизайн
+*/
+.event_task{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    text-align: center;
+    line-height: 25px;
+    border: 2px solid gray;
+    color: gray;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    right: 5px;
+}
+
+.event_task:hover{
+    border-color: white;
+    color: white;
+}
+
+.start_task{
+    /*right: 37px;*/
+}
+
+.ok_task{
+ /*  top: 37px; 
+   right: 37px;*/
+}
+
+.send_task{
+ /*  right: 5px;*/
+}
+
+.weit_task{
+ /*   top: 37px;
+    right: 5px;*/
+}
+
+.start_task:hover{
+    background-color: silver;
+    
+}
+
+#start:hover{
+    border-left-color: lime;
+}
+
+.ok_task:hover{
+    background-color: green;    
+}
+
+.send_task:hover{
+    background-color: blueviolet;
+    
+}
+
+.weit_task:hover{
+    background-color: yellowgreen;
+}
+
+
+/*
+Панель управления задачами дизайн
+*/
+
+
+#settings{
+    height: 50px;
+    font-size: 19px;
+    
+    margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.menu_group{
+    
+    height: 50px;    
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+}
+
+.menu_button{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: lightgoldenrodyellow;
+    margin-right: 10px;
+    border: 1px solid #87acda;
+    position: relative;
+    cursor: pointer;
+	
+}
+
+.active_menu_button{
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.task_shape{
+    float: left;
+    width: 10px;
+    height: 5px;
+    background-color: burlywood;
+    border: 1px solid lightgray;
+    margin-left: 3px;
+    margin-top: 4px;
+}
+
+.task_opis_shape{
+    float: left;
+    width: 20px;
+    height: 6px;
+    
+    border-bottom: 1px solid lightgray;
+    margin-left: 3px;
+    margin-top: 4px;
+}
+
+.alarm{
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 0;
+    width: 2px;
+    border-top: 20px solid red;
+    border-right: 3px solid transparent;
+    border-left: 3px solid transparent;
+    border-bottom: 0;    
+}
+.alarm:after{
+    height: 4px;
+    width: 4px;
+    background-color: red;
+    content: "";
+    position: absolute;
+    bottom: 7px;
+    left: 18px;
+}
+
+#start{
+    height: 0;
+    width: 0;
+    margin-left: 9px;
+    margin-top: 5px;
+    border-left: 10px solid gray;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+}
+
+.calendar{
+    width: 30px;
+    height: 23px;    
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #87acda;
+    border-top-width: 7px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.cal_day{
+    background-color: #87acda;
+    height: 4px;
+    width: 6px;
+    margin-top: 14px;
+    margin-left: 20px;
+}
+
+
+/*
+Форма добавления и редактирования задач
+*/
+
+.task_red_form{
+    
+    display: none;
+    position: fixed;
+    top: 300px;
+    z-index: 9999;
+    border: 3px solid #87acda;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f2f2f2;
+}
+
+label{
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: gray;
+}
+
+.stolbik{
+    display: inline-block;
+    width: 480px;
+    font-size: 17px;
+    height: 220px;    
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+td{
+    width: 480px;
+    font-size: 17px;
+    height: 220px;    
+    /*border: 1px solid gray;*/
+    padding: 5px;
+}
+
+
+label.long{
+    width: 450px;
+    
+}
+
+label.medium{
+    width: 225px;
+}
+
+label.short{
+    width: 130px;
+}
+
+input.long{
+    
+    font-size: inherit;
+    width: 450px;
+}
+
+input.short{
+    
+    font-size: inherit;
+    width: 200px;
+}
+
+input{
+    border: 2px solid #87acda; 
+}
+
+textArea{
+    border: 2px solid #87acda; 
+}
+
+textArea.long{
+    width: 450px;
+    height: 100px;
+    font-size: inherit;
+    resize: none;
+}
+
+select.long{
+    width: 320px;
+    font-size: inherit;
+}
+
+select.short{
+    width: 225px;
+    font-size: inherit;
+}
+
+#ft_comments_bufer_new{
+    border: 2px solid #87acda;
+    border-radius: 10px;
+    height: 150px;
+    width: 450px;
+    padding: 10px;
+    font-family: monospace;
+    font-weight: bold;
+    overflow-y: scroll;
+}
+
+#button_section{
+    display: block;
+}
+
+button{
+    font-size: 17px;    
+}
+
+#shadow_page{
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+    background-color: rgba(80,80,80,0.7);
+}
+
+
+.hider{
+    display: none;
+}
+
+.shower{
+    display: block;
+}

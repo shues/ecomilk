@@ -1,0 +1,96 @@
+#search-form{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+#search-form h2{
+    font-weight: lighter;
+}
+
+#search-form input{
+    height: 30px;
+    width: 400px;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+table{
+    width: 90%;
+    margin-left: 5%;
+    font-size: 13px;
+}
+
+caption{
+    font-size: 16px;
+    font-weight: bold;
+    color: #444444;
+    text-align: left;
+    height: 40px;
+    border-bottom: 1px solid lightgray;
+}
+
+tr{
+    height: 40px;
+}
+
+td, th{
+    border-bottom: 1px solid lightgray;
+}
+
+.td_0, .td_2{
+     font-weight: bold;
+ }
+ 
+th{
+    text-align: left;
+    font-size: 14px;
+}
+
+.shadow{
+     height: 100%;
+     width: 100%;
+     position: fixed;
+     top: 0;
+     left: 0;
+     background-color: rgba(80,80,80,0.5);
+     z-index: 100;
+     display: none;
+ }
+ 
+ .modalW{
+     position: absolute;
+     width: 50%;
+     left: 25%;
+     top: 25%;
+     /*height: 300px;*/
+     background-color: #f2f2f2;
+     border-radius: 15px;
+     display: none;
+     text-align: right;
+     padding-top: 20px;
+     padding-bottom: 20px;
+     padding: 10px;
+ }
+ 
+ .modalW input{
+     font-size: 20px;
+     width: 80%;
+     /*float: right;*/
+     margin-top: 10px;
+ }
+ 
+ .modalW textarea{
+     font-size: 16px;
+     height: 200px;
+     width: 90%;
+ }
+
+ .dept_name{
+    width: 100%;
+    background-color: lightblue;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+ }

@@ -1,0 +1,318 @@
+//Закрыть форму редактирвания задачи
+function close_frm(save){
+	 var frm = document.getElementById('form_for_r_task_red');
+	 var shd = document.getElementById('shadow_form');
+
+	 if (save==1) {//сохраняем данные уже имеющейся задачи
+	 	// Обработка ошибок ввода
+	 	if (document.getElementById('task_name').value == '') {
+	 		alert('Введите название задачи');
+	 		return;
+	 	}
+	 	if (document.getElementById('task_owner').value == 0) {
+	 		alert('Выберите исполнителя задачи');
+	 		return;
+	 	}
+		// забор данных из формы
+	 	var taskName = document.getElementById('task_name').value;
+	 	var taskId = frm.getAttribute('data-id');
+	 	var taskOwner = document.getElementById('task_owner').value;
+	 	var taskMon = 0;
+	 	var taskTue = 0;
+	 	var taskWed = 0;
+	 	var taskThu = 0;
+	 	var taskFri = 0;
+	 	var taskComm = document.getElementById('comment').value;
+
+
+	 	if (document.getElementById('mon').checked) {
+	 		taskMon = 1;
+	 	}
+	 	if (document.getElementById('tue').checked) {
+	 		taskTue = 1;
+	 	}
+	 	if (document.getElementById('wed').checked) {
+	 		taskWed = 1;
+	 	}
+	 	if (document.getElementById('thu').checked) {
+	 		taskThu = 1;
+	 	}
+	 	if (document.getElementById('fri').checked) {
+	 		taskFri = 1;
+	 	}
+	 	// формируе url
+	 	var url_save_task = "?page_5_5?save_task?&tn="	+taskName
+	 										  +"&tid="	+taskId
+	 										  +"&town="	+taskOwner
+	 										  +"&tmon="	+taskMon
+	 										  +"&ttue="	+taskTue
+	 										  +"&twed="	+taskWed
+	 										  +"&tthu="	+taskThu
+	 										  +"&tfri="	+taskFri
+	 										  +"&tcomm="+taskComm;
+	 	document.location = url_save_task;// отправляем запрос с данными на сервер
+	 }
+	 // чистим форму для последующих запусков
+	 var comments = document.getElementById('last_comments');
+	 for (var i = comments.children.length - 1; i >= 1; i--) {
+	 	comments.removeChild(comments.children[i]);
+	 }
+
+	 frm.style.display = "none";
+	 shd.style.display = "none";
+}
+
+
+//Показать форму редактирования задачи
+// Форма имитирует работу модального окна
+function show_form_task_red(newf){
+	//Покажем форму и подложку
+	 var frm = document.getElementById('form_for_r_task_red');
+	 var shd = document.getElementById('shadow_form');
+	 shd.style.display = "block";
+	 frm.style.display = "block";
+	// выровняем форму по центру окна
+	 var all_width = document.body.clientWidth;
+	 var all_height = document.body.clientHeight;
+	
+	 var m_r_frm = all_width - frm.clientWidth;
+	 frm.style.left = m_r_frm/2 + "px";
+	 
+	 if (newf == 1) {//Создание новой задачи
+	 	frm.setAttribute('data-id',0);
+	 }else{// редактирование уже имеющейся задачи
+	 	// перенесем атрибуты задачи в форму редактирования
+	 	var elem = arguments[1].parentElement;
+	 	var task_id = elem.getAttribute('data-id');
+	 	var taskMon = elem.getAttribute('data-mon');
+	 	var taskTue = elem.getAttribute('data-tue');
+	 	var taskWed = elem.getAttribute('data-wed');
+	 	var taskThu = elem.getAttribute('data-thu');
+	 	var taskFri = elem.getAttribute('data-fri');
+	 	var taskOwn = elem.getAttribute('data-own');
+
+	 	document.getElementById('mon').checked = parseInt(taskMon);
+	 	document.getElementById('tue').checked = parseInt(taskTue);
+	 	document.getElementById('wed').checked = parseInt(taskWed);
+	 	document.getElementById('thu').checked = parseInt(taskThu);
+	 	document.getElementById('fri').checked = parseInt(taskFri);
+
+	 	frm.setAttribute('data-id',task_id);
+	 	document.getElementById('task_name').value = arguments[1].textContent;
+	 	document.getElementById('task_owner').value = taskOwn;
+		// выведем комментарии пользователей
+	 	var comm_str = elem.children[4].textContent;
+	 	if (comm_str != "") {
+	 		var mass_comm = comm_str.split(';');
+	 		for (var i = mass_comm.length - 1; i >= 0; i--) {
+	 			var mass_mess = mass_comm[i].split(':');
+	 			var date = mass_mess[0].substring(8,10) + 
+	 					"." + mass_mess[0].substring(5,7) + 
+	 					"." + mass_mess[0].substring(0,4) + 
+	 					" " + mass_mess[1];
+	 			var mess = mass_mess[2];
+	 			var last_comments = document.getElementById("last_comments");
+	 			var comm_cont = last_comments.children[0].cloneNode(true);
+	 			comm_cont.getElementsByTagName('i')[0].textContent = date;
+	 			comm_cont.getElementsByTagName('span')[1].textContent = mess;
+	 			comm_cont.style.display = "block";
+	 			last_comments.append(comm_cont);
+
+	 		}
+	 	}
+	 	// подготовим поле для новых комментариев
+	 	document.getElementById('comment').value = "";
+	 	document.getElementById('comment').focus();
+	 }
+}
+
+//Нажата кнопка ок Сохранение данных задачи
+function r_task_ok(par){
+	 var tek_str = par.parentElement;
+	 var task_id = tek_str.getAttribute("data-id");
+	 var url_ok_task = "?page_5_5?ok_task?&tid="	+task_id;
+	 document.location = url_ok_task;
+}
+
+// Показать все задачи
+function show_all_task(par){
+	// Отмечен ли флажек показа всех задач
+	if (par.checked) {
+		var url_all_task = "?page_5_5?all_task?";
+		document.cookie = "all_task=show";
+		document.location = url_all_task;
+	}else{
+		var url_all_task = "?page_5_5?index?";
+		document.cookie = "all_task=null";
+		document.location = url_all_task;
+	}
+}
+// Скрыть кнопку ОК 
+function allow_button(){
+	document.getElementById("ok_button").disabled = false;
+}
+
+
+
+/* Объект мастера добавления новой задачи.
+ у него есть список страниц в которых пользователь 
+ имеет возможность интерактивно вводить данный
+ переключение между страницами выполняется с помощью
+ кнопок навигации.*/
+var add_master = new Object();
+
+add_master.fon = document.getElementById('shadow_form');
+
+add_master.forma = document.getElementById('form_for_r_task_red');
+
+/* Указатель на активную в данный момент страницу мастера
+*/
+add_master.active_page = 0;
+
+add_master.active_repeat = '';
+
+/* Кнопка перехода на следующую страницу. На последней странице
+	она превратится в кнопку "Сохранить"
+*/
+add_master.next_button = document.getElementById('forward_button');
+
+/* Кнопка перехода на предыдущую страницу
+*/
+add_master.back_button = document.getElementById('back_button');
+
+/* Кнопка закрытия мастера без сохранения данных
+*/
+add_master.cancel_button = document.getElementById('not_save');
+
+/* Список выбора отдела
+*/
+add_master.depts = document.getElementById('department');
+
+/* Список выбора исполнителя
+*/
+add_master.users = document.getElementById('users');
+
+/* Список выбора исполнителя
+*/
+add_master.users_show = document.getElementById('users_show');
+
+
+
+/* Массив страниц мастера
+*/
+add_master.pages = [];
+
+/* Массив радиокнопок повторяющихся задач 
+*/
+add_master.repeat_radio = [];
+
+/* Запустить мастер
+*/
+add_master.start = function () {
+	// Заполним массив страниц
+	add_master.pages = document.getElementsByClassName('content_box');
+	if (add_master.pages.length == 0) {
+		var blocs = document.getElementsByTagName('div');
+		for (var i = 0; i <= blocs.length-1; i++) {
+			if (blocs[i].className == 'content_box') {
+				add_master.pages.push(blocs[i]);
+			}
+		}
+	}
+	// заполним массив радиокнопок
+	add_master.repeat_radio = document.getElementsByName('repeat');
+	if (add_master.repeat_radio.length == 0) {
+		var radios = document.getElementsByTagName('input');
+		for (var i=0; i<radios.length; i++) {
+			if (radios[i].name == 'repeat') {
+				add_master.repeat_radio.push(radios[i]);
+			}
+		}
+	}
+	
+	for (var i=0;i<add_master.repeat_radio.length; i++) {
+		add_master.repeat_radio[i].onchange = add_master.change_repeat;
+		if (add_master.repeat_radio[i].checked) {
+			add_master.active_repeat = add_master.repeat_radio[i].value;
+		}
+	}
+	
+	add_master.fon.style.display = "block";
+	add_master.forma.style.display = "block";
+	// покажем первую страницу
+	add_master.pages[0].style.display = "block";
+}
+
+/* Завершить работу мастера без сохранения
+*/
+add_master.cancel = function () {
+	add_master.forma.style.display = "none";
+	add_master.fon.style.display = "none";
+}
+
+/* Сохранить данные работы мастера
+*/
+add_master.save = function () {
+}
+
+/* Найти страницы мастера
+*/
+add_master.get_pages = function () {
+	
+}
+
+/* Перейти на следующую страницу мастера
+*/
+add_master.next_page = function () {
+	add_master.pages[add_master.active_page].style.display = "none";
+	add_master.active_page++;
+	add_master.pages[add_master.active_page].style.display = "block";
+	if (add_master.active_page == add_master.pages.length-1) {
+		add_master.next_button.textContent = "Сохранить";
+		add_master.next_button.onclick = add_master.save;
+	}
+}
+
+/* Перейти на предыдущую страницу мастера
+*/
+add_master.previous_page = function () {
+	if (add_master.active_page == add_master.pages.length-1) {
+		add_master.next_button.onclick = add_master.next_page;
+		add_master.next_button.textContent = "ДАЛЕЕ >>";		
+	}
+	add_master.pages[add_master.active_page].style.display = "none";
+	add_master.active_page--;
+	add_master.pages[add_master.active_page].style.display = "block";
+}
+
+/*Управление отображением списка пользователей в зависимости от выбранного отдела.
+*/
+add_master.change_dept = function () {
+	var count = add_master.users_show.children.length;												// Очистим видимый список пользователей
+	for (var i = count-1; i>0; i--) {																	// Перебросим все элементы в скрытый список
+		add_master.users.appendChild(add_master.users_show.children[i]);
+	}
+	var tec_dept = add_master.depts.children[add_master.depts.selectedIndex].value;		// Получим идентификатор департамента
+	count = add_master.users.children.length;															// Выберем из второго списка сотрудников этого департамента
+	for (var i = count-1; i > 0; i--) {
+		if (add_master.users.children[i].getAttribute('data-parent') == tec_dept) {
+			add_master.users_show.appendChild(add_master.users.children[i]);
+		}
+	}
+}
+
+/* Изменить страницу опций повторяющихся задач.
+*/
+add_master.change_repeat = function () {
+	document.getElementById(add_master.active_repeat).style.display = "none";
+	add_master.active_repeat = this.value;
+	document.getElementById(add_master.active_repeat).style.display = "block";
+}
+
+
+add_master.starter = document.getElementById('add_button');
+add_master.starter.onclick = add_master.start;
+add_master.cancel_button.onclick = add_master.cancel;
+add_master.next_button.onclick = add_master.next_page;
+add_master.back_button.onclick = add_master.previous_page;
+add_master.depts.onchange = add_master.change_dept;

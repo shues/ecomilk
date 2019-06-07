@@ -1,0 +1,21 @@
+.sys_button_1{
+	float: left;
+	font-weight: bold;
+	font-size: 20px;
+	height: 40px;
+	margin-right: 10px;
+	width: 100px;
+	border-radius: 5px;
+	background-color: white;
+	border: 1px solid grey;
+	cursor: pointer;
+}
+
+.sys_button_1:hover{
+	background-color: lightgray;
+}
+
+.sys_select_1{
+	font-size: 30px;
+	width: 98%;
+}

@@ -1,0 +1,42 @@
+table{
+	width: 90%;
+	margin-left: 5%;
+	margin-top: 20px;
+}
+
+#dep_col{
+	width: 30%;
+	text-align: left;
+	padding-left: 25px;
+}
+
+#ip_col{
+	width: 20%;
+	text-align: left;
+	padding-left: 25px;
+}
+
+#auth_col{
+	width: 25%;
+	text-align: left;
+	padding-left: 25px;
+}
+
+#model_col{
+	width: 25%;
+	text-align: left;
+	padding-left: 25px;
+}
+
+td{
+	height: 25px;
+	border-bottom: 1px solid gray;
+}
+
+button{
+	float: right;
+	margin-right: 5%;
+	font-size: 25px;
+	font-weight: bold;
+	color: gray;
+}

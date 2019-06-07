@@ -1,0 +1,6 @@
+<select id="sel_date_year">
+</select>
+<select id="sel_date_month">
+</select>
+<select id="sel_date_day">
+</select>

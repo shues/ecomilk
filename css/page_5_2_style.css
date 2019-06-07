@@ -1,0 +1,129 @@
+h2 , h3 {
+     color: #87acda;
+}
+h2 {
+	font-size:16px;
+}
+h3 {
+	font-size:14px;
+	margin: 5px;
+}
+
+
+.like { 
+    position: relative; 
+    width: 25px; 
+    height: 16px; 
+    display: inline-block;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.like:before, .like:after {
+    position: absolute; 
+    content: ""; 
+    left: 13px; 
+    top: 0; 
+    width: 12.5px; 
+    height: 20px; 
+    background: lightblue; 
+    -moz-border-radius: 50px 50px 0 0; 
+    border-radius: 50px 50px 0 0; 
+    -webkit-transform: rotate(-45deg); 
+    -moz-transform: rotate(-45deg); 
+    -ms-transform: rotate(-45deg); 
+    -o-transform: rotate(-45deg); 
+    transform: rotate(-45deg); 
+    -webkit-transform-origin: 0 100%; 
+    -moz-transform-origin: 0 100%; 
+    -ms-transform-origin: 0 100%; 
+    -o-transform-origin: 0 100%; 
+    transform-origin: 0 100%; 
+}
+
+.like:after { 
+    left: 0; 
+    -webkit-transform: rotate(45deg); 
+    -moz-transform: rotate(45deg); 
+    -ms-transform: rotate(45deg); 
+    -o-transform: rotate(45deg); 
+    transform: rotate(45deg); 
+    -webkit-transform-origin: 100% 100%; 
+    -moz-transform-origin: 100% 100%; 
+    -ms-transform-origin: 100% 100%; 
+    -o-transform-origin: 100% 100%; 
+    transform-origin :100% 100%; 
+}
+
+#main_cont{
+    width: 90%;
+    margin-left: 5%;
+}
+
+.element_gal{
+    width: 220px;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: inline-block;
+    margin-top: 15px;
+    text-align: left;
+}
+.gallery_pic:hover{
+	opacity:1;
+}
+
+
+.gallery_pic{
+	opacity:0.6;
+    height: auto;
+    width: auto !important;
+    max-height: 220px;
+    max-width: 220px;
+    cursor: pointer;
+}
+
+.img_str{
+    height: 30px;    
+    /*background-color: lightgray;*/
+    text-align: center;
+}
+
+.like_str{
+    display: inline-block;    
+}
+
+#shadow{
+	vertical-align:middle;
+	display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(80,80,80,0.9);
+    color: lightgray;
+    text-align: center;
+}
+
+#shadow img{
+	vertical-align:middle;
+    height: auto;
+    width: auto;
+    max-width: 90%;
+    max-height: 90%;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+#close {
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+#shadow .pointer{
+opacity:0.2;
+}
